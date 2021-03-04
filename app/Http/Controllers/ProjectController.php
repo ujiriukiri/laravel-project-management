@@ -14,10 +14,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'status' => 'success',
-            'data' => Project::with('issues')->get()
-        ]);
+        $projects = Project::with('issues')->get();
+        return view('projects.index', ['projects' => $projects]);
     }
 
     /**
