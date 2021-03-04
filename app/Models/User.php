@@ -50,4 +50,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class);
     }
+
+    /**
+     * The issues that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function issues()
+    {
+        return $this->belongsToMany(Issue::class);
+    }
 }
