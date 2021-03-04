@@ -31,4 +31,14 @@ class Issue extends Model
     {
         return $this->belongsTo(Stage::class);
     }
+
+    /**
+     * The labels that belong to the Issue
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function labels()
+    {
+        return $this->belongsToMany(Label::class);
+    }
 }
