@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Issue;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -9,7 +10,8 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function dashboard() {
-        $project_count = Project::count();
+        $projects_count = Project::count();
+        $users_count = User::count();
         $issues = Issue::all();
         $open_issues = [];
         $closed_issues = [];
@@ -18,7 +20,8 @@ class DashboardController extends Controller
         });
 
         return view('dashboard', [
-            'project_count' => $project_count,
+            'projects_count' => $projects_count,
+            'users_count' => $users_count,
             'open_issues' => count($open_issues),
             'closed_issues' => count($closed_issues)
         ]);

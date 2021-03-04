@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mt-4">
                 <div class="flex flex-wrap -mx-6">
-                    <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
+                    <div class="w-full px-6 sm:w-1/2 xl:w-1/4">
                         <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                             <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75">
                                 <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -18,13 +18,13 @@
                             </div>
 
                             <div class="mx-5">
-                                <h4 class="text-2xl font-semibold text-gray-700">{{ $project_count }}</h4>
+                                <h4 class="text-2xl font-semibold text-gray-700">{{ $projects_count }}</h4>
                                 <div class="text-gray-500">Projects</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
+                    <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 sm:mt-0">
                         <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                             <div class="p-3 rounded-full bg-green-600 bg-opacity-75">
                                 <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
 
-                    <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
+                    <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 sm:mt-0">
                         <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                             <div class="p-3 rounded-full bg-red-600 bg-opacity-75">
                                 <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,6 +50,21 @@
                             <div class="mx-5">
                                 <h4 class="text-2xl font-semibold text-gray-700">{{ $closed_issues }}</h4>
                                 <div class="text-gray-500">Closed Issues</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/4 xl:mt-0">
+                        <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                            <div class="p-3 rounded-full bg-gray-600 bg-opacity-75">
+                                <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            </div>
+
+                            <div class="mx-5">
+                                <h4 class="text-2xl font-semibold text-gray-700">{{ $users_count }}</h4>
+                                <div class="text-gray-500">Users</div>
                             </div>
                         </div>
                     </div>
