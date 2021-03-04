@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\IssueController;
+use App\Http\Controllers\LabelController;
+use App\Http\Controllers\StageController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +27,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::resource('users', UserController::class);
+Route::resource('projects', ProjectController::class);
+Route::resource('issues', IssueController::class);
+Route::resource('labels', LabelController::class);
+Route::resource('stages', StageController::class);

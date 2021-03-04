@@ -27,7 +27,7 @@ class IssueFactory extends Factory
             'title' => $this->faker->realText(20),
             'description' => $this->faker->realText(),
             'number' => $count++,
-            'stage_id' => 1,
+            'stage_id' => mt_rand(1,3),
             'user_id' => mt_rand(1,10)
         ];
     }

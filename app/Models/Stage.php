@@ -13,11 +13,11 @@ class Stage extends Model
     protected $guarded = ['id'];
 
     /**
-     * Get the project that owns the Stage
+     * Get the issues that owns the Stage
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function project()
+    public function issues()
     {
         return $this->hasMany(Issue::class);
     }

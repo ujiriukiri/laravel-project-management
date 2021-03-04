@@ -14,10 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-      return response()->json([
-        'status' => 'success',
-        'data' => User::count()
-      ]);
+        return response()->json([
+            'status' => 'success',
+            'data' => User::with('issues')->get()
+        ]);
     }
 
     /**

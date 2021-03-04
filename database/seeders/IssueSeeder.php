@@ -13,6 +13,9 @@ class IssueSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Issue::factory(10)->create();
+        \App\Models\Issue::factory(22)->create([
+            'project_id' => mt_rand(1, 2),
+            'stage_id' => mt_rand(1, 3)
+        ]);
     }
 }
