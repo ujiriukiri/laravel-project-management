@@ -10,6 +10,8 @@ class Project extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $guarded = ['id'];
+
     /**
      * Get the user that owns the Project
      *
