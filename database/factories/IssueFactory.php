@@ -28,7 +28,8 @@ class IssueFactory extends Factory
             'description' => $this->faker->realText(),
             'number' => $count++,
             'stage_id' => mt_rand(1,3),
-            'user_id' => mt_rand(1,10)
+            'user_id' => mt_rand(1,10),
+            'status' => $this->faker->randomElement([0, 1, 1])
         ];
     }
 }

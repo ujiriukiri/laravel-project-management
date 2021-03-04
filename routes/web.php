@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\IssueController;
@@ -28,8 +29,11 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('users', UserController::class);
-Route::resource('projects', ProjectController::class);
-Route::resource('issues', IssueController::class);
-Route::resource('labels', LabelController::class);
-Route::resource('stages', StageController::class);
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::resource('users', UserController::class);
+    Route::resource('projects', ProjectController::class);
+    Route::resource('issues', IssueController::class);
+    Route::resource('labels', LabelController::class);
+    Route::resource('stages', StageController::class);
+});
