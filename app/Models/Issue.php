@@ -21,4 +21,14 @@ class Issue extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    /**
+     * Get the stage that owns the Issue
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function stage()
+    {
+        return $this->belongsTo(Stage::class);
+    }
 }

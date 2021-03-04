@@ -11,4 +11,14 @@ class Stage extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
+
+    /**
+     * Get the project that owns the Stage
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function project()
+    {
+        return $this->hasMany(Issue::class);
+    }
 }
