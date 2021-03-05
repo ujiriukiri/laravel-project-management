@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory;
 use App\Models\User;
 use App\Models\Issue;
 use App\Models\Label;
@@ -20,8 +21,12 @@ class IssueRelationshipsSeeder extends Seeder
         $users = User::pluck('id');
         $users = Label::pluck('id');
 
+        $faker = Factory::create('en_NG');
+
         foreach ($issues as $issue) {
-            $issue->users()->attach($users->random(mt_rand(3,5)));
+            if($faker->randomElement([0,1,1,1,1])) {
+                $issue->users()->attach($users->random(mt_rand(1,3)));
+            }
             $issue->labels()->attach($users->random(mt_rand(1,3)));
         }
     }
