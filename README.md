@@ -2,7 +2,7 @@
 
 Sample Project Management Web App
 
-##### Tech Stach
+##### Tech Stack
 [Laravel](https://www.laravel.com)
 [Blade](https://laravel.com/docs/8.x)
 [Alpinejs](https://github.com/alpinejs/alpine)
