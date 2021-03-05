@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -25,7 +27,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $project = new Project();
+
+        return view('projects.create', [
+            'project' => $project
+        ]);
     }
 
     /**
@@ -34,9 +40,22 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        //
+        \DB::beginTransaction();
+        try {
+            $project = Project::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'user_id' => Auth::id(),
+            ]);
+        } catch (\QueryException $ex) {
+            \DB::rollback();
+            return back()->withInput();
+        }
+        \DB::commit();
+
+        return redirect('projects')->with('status', 'Success: Project Created');
     }
 
     /**
