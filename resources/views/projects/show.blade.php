@@ -24,6 +24,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col">
+                        @if (count($projects) < 1)
+                            <h3 class="text-lg w-full text-center">You have no Projects</h3>
+                        @else
                         <div class="flex-grow overflow-auto">
                             <table class="relative w-full border table-fixed">
                                 <thead>
@@ -92,6 +95,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
