@@ -17,7 +17,7 @@ class CreateIssuesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('project_id');
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('number');
             $table->unsignedBigInteger('stage_id');
             $table->unsignedBigInteger('user_id');
