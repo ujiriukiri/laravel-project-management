@@ -66,7 +66,11 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        $project = Project::with(['issues.users', 'issues.labels'])->findOrFail($project->id);
+
+        return view('projects.show', [
+            'project' => $project
+        ]);
     }
 
     /**
@@ -77,7 +81,11 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $project = Project::findOrFail($project->id);
+
+        return view('projects.create', [
+            'project' => $project
+        ]);
     }
 
     /**
@@ -87,9 +95,21 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(StoreProjectRequest $request, Project $project)
     {
-        //
+        \DB::beginTransaction();
+        try {
+            $project = Project::where('id', $project->id)->update([
+                'title' => $request->title,
+                'description' => $request->description
+            ]);
+        } catch (\QueryException $ex) {
+            \DB::rollback();
+            return back()->withInput();
+        }
+        \DB::commit();
+
+        return redirect('projects')->with('status', 'Success: Project Updated!');
     }
 
     /**
@@ -100,6 +120,16 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        \DB::beginTransaction();
+        try {
+            $project->delete();
+        } catch (\QueryException $ex) {
+            \DB::rollback();
+            return back()->withInput();
+        }
+        \DB::commit();
+
+        return redirect('projects')->with('status', 'Success: Project Deleted!');
+
     }
 }

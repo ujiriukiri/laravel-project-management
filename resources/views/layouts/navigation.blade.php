@@ -17,7 +17,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
+                    <x-nav-link :href="route('projects.index')" :active="Str::contains(url()->current(), 'projects')">
                         {{ __('Projects') }}
                     </x-nav-link>
                 </div>
